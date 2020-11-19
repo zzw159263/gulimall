@@ -9,9 +9,9 @@ import java.util.Map;
 /**
  * spu图片
  *
- * @author Jack Zhai
- * @email 1032983946@qq.com
- * @date 2020-11-17 01:04:57
+ * @author 
+ * @email 
+ * @date 2020-11-19 00:44:39
  */
 public interface SpuImagesService extends IService<SpuImagesEntity> {
 

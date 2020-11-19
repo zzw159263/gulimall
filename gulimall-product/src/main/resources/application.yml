@@ -4,9 +4,10 @@ spring:
     password: 123456
     url: jdbc:mysql://192.168.247.128:3306/gulimall_pms
     driver-class-name: com.mysql.jdbc.Driver
-
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: id_worker
+server:
+  port: 10000
