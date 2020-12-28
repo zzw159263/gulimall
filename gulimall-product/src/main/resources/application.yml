@@ -10,4 +10,4 @@ mybatis-plus:
     db-config:
       id-type: id_worker
 server:
-  port: 9000
+  port: 10000
