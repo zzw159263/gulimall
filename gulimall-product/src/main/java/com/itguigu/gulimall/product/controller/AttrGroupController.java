@@ -4,6 +4,7 @@ import com.itguigu.common.utils.PageUtils;
 import com.itguigu.common.utils.R;
 import com.itguigu.gulimall.product.entity.AttrGroupEntity;
 import com.itguigu.gulimall.product.service.AttrGroupService;
+import com.itguigu.gulimall.product.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +26,15 @@ public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
 
+    @Autowired
+    private CategoryService categoryService;
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = attrGroupService.queryPage(params);
+    @RequestMapping("/list/{catelogId}")
+    public R list(@RequestParam Map<String, Object> params,
+                  @PathVariable("catelogId")Long catelogId){
+        PageUtils page = attrGroupService.queryPage(params,catelogId);
 
         return R.ok().put("page", page);
     }
@@ -43,6 +47,8 @@ public class AttrGroupController {
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
 		AttrGroupEntity attrGroup = attrGroupService.getById(attrGroupId);
 
+        Long catelogId = attrGroup.getCatelogId();
+        Long[] path = categoryService.findCategoryPath(catelogId);
         return R.ok().put("attrGroup", attrGroup);
     }
 
